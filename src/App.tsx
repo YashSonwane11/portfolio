@@ -10,6 +10,10 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    {/* Top-center site image (fixed) */}
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+     
+    </div>
     <TooltipProvider>
       <Toaster />
       <Sonner />
