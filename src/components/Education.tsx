@@ -21,8 +21,8 @@ const education = [
 const certifications = [
   {
     title: "HackerRank SQL Basic Certification",
-    description: "Mastered SQL query development by solving numerous real-world problems. Achieved 3-star rating.",
-    badge: "3 ⭐",
+    description: "Mastered SQL query development by solving numerous real-world problems. Achieved 4-star rating.",
+    badge: "4 ⭐",
     link: "https://drive.google.com/file/d/1bVNCGjQgOr7tpk5vDgVp-Ra4SE4OPPyh/view?usp=drive_link",
   },
   {
@@ -35,6 +35,7 @@ const certifications = [
     description: "Professional development and industry-standard training certification.",
     link: "https://drive.google.com/file/d/1jryGNgWAqJOSgIjnYNgf7n2io4URlnB4/view?usp=drive_link",
   },
+  
 ];
 
 const Education = () => {
