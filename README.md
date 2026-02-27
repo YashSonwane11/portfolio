@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to your project
 
 ## Project info
 
@@ -8,11 +8,11 @@
 
 There are several ways of editing your application.
 
-**Use Lovable**
+**Use**
 
 Simply visit the (https://yashkumarportfolio-sand.vercel.app) and start prompting.
 
-Changes made via Lovable will be committed automatically to this repo.
+Changes made via will be committed automatically to this repo.
 
 **Use your preferred IDE**
 
