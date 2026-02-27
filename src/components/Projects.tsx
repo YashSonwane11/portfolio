@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 const projects = [
   {
     title: "Pizza Sales Data Analysis Dashboard",
+    image: "/Pizza_Dashbord.webp",
     subtitle: "SQL + Power BI Project",
     description:
       "Analyzed pizza sales data using SQL and visualized insights in a Power BI dashboard to improve business performance and optimize menu strategy.",
@@ -49,6 +50,7 @@ const projects = [
   /* ================= NEW PROJECT ================= */
   {
     title: "Mobile Sales Dashboard",
+    image: "/DashboardImage.webp",
     subtitle: "Power BI | Excel Project",
     description:
       "Built an interactive Power BI dashboard to analyze mobile phone sales across India, uncovering sales trends, customer behavior, payment preferences, and brand performance.",
@@ -97,7 +99,7 @@ const Projects = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <p className="text-primary font-mono text-sm mb-2">// FEATURED WORK</p>
+            <p className="text-primary font-mono text-sm mb-2">FEATURED WORK</p>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Projects & <span className="text-gradient">Case Studies</span>
             </h2>
@@ -144,6 +146,27 @@ const Projects = () => {
                     </Button>
                   </div>
                 </div>
+
+                {/* Project Image */}
+                {project.image && (
+                  <div className="w-full p-8 bg-gradient-to-b from-transparent to-black/20 border-b border-border/50 relative overflow-hidden group">
+                    {/* Decorative blurred backdrop */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center opacity-20 blur-2xl scale-110 transition-transform duration-700 group-hover:scale-125 group-hover:opacity-30"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                    />
+
+                    {/* Image container with glassmorphism frame */}
+                    <div className="relative mx-auto max-w-4xl rounded-xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/10 ring-1 ring-white/5 transition-all duration-500 group-hover:shadow-[0_0_60px_rgba(147,51,234,0.3)] group-hover:-translate-y-2">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </div>
+                )}
 
                 {/* Project Content */}
                 <div className="p-8">

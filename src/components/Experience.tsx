@@ -23,7 +23,7 @@ const Experience = () => {
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <p className="text-primary font-mono text-sm mb-2">// PROFESSIONAL JOURNEY</p>
+            <p className="text-primary font-mono text-sm mb-2">PROFESSIONAL JOURNEY</p>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Work <span className="text-gradient">Experience</span>
             </h2>

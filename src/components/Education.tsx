@@ -47,7 +47,7 @@ const Education = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <p className="text-primary font-mono text-sm mb-2">// ACADEMIC BACKGROUND</p>
+            <p className="text-primary font-mono text-sm mb-2">ACADEMIC BACKGROUND</p>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Education & <span className="text-gradient">Certifications</span>
             </h2>

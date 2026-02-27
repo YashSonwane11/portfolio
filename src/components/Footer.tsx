@@ -15,8 +15,7 @@ const Footer = () => {
                 <span className="text-foreground">Sonwane</span>
               </a>
               <p className="text-sm text-muted-foreground">
-                © {currentYear} All rights reserved. Built with{" "}
-                <Heart className="w-3 h-3 inline text-chart-4" /> and data.
+                © {currentYear} All rights reserved.
               </p>
             </div>
 
