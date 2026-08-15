@@ -9,6 +9,7 @@ import {
   MapPin,
   Download,
   ArrowDown,
+  Phone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -53,6 +54,8 @@ function HeroIconBackground() {
     </div>
   );
 }
+
+
 
 /* ===== HERO ===== */
 const Hero = () => {
@@ -101,14 +104,25 @@ const Hero = () => {
             </span>
           </div>
 
-          {/* Name (NO BLINK) */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-4 text-gradient">
+          {/* Name */}
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 mt-4 text-gradient leading-tight">
             {name}
           </h1>
 
-          {/* Role */}
-          <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-6">
-            Data Analyst <span className="text-primary">|</span> Business Intelligence Specialist
+          {/* Multi-domain role */}
+          <p className="text-sm sm:text-lg md:text-xl text-muted-foreground font-medium mb-3 leading-relaxed">
+            Data Analyst{" "}
+            <span className="text-cyan-400">|</span>{" "}
+            Business Intelligence{" "}
+            <span className="text-violet-400">|</span>{" "}
+            Java Backend{" "}
+            <span className="text-emerald-400">|</span>{" "}
+            Full-Stack &amp; AI
+          </p>
+
+          {/* Tagline */}
+          <p className="text-sm md:text-base text-muted-foreground/80 max-w-2xl mx-auto mb-6 leading-relaxed">
+            Turning data into insights, building scalable backend systems, and developing intelligent full-stack applications.
           </p>
 
           {/* Location */}
@@ -137,15 +151,17 @@ const Hero = () => {
           {/* Social icons */}
           <div className="flex items-center justify-center gap-5">
             {[
-              { icon: Mail, href: "mailto:yashsonwane438@gmail.com" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/yash-sonwane-88a92923a" },
-              { icon: Github, href: "https://github.com/YashSonwane11" },
-            ].map(({ icon: Icon, href }, i) => (
+              { icon: Mail, href: "mailto:yashsonwane438@gmail.com", label: "Email" },
+              { icon: Phone, href: "tel:+918767735611", label: "Phone" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/yash-sonwane-88a92923a", label: "LinkedIn" },
+              { icon: Github, href: "https://github.com/YashSonwane11", label: "GitHub" },
+            ].map(({ icon: Icon, href, label }, i) => (
               <motion.a
                 key={i}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                aria-label={label}
                 whileHover={{ y: -4, scale: 1.1 }}
                 className="p-3 rounded-full bg-white/5 border border-white/10 text-muted-foreground hover:text-primary transition"
               >

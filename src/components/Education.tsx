@@ -6,6 +6,7 @@ const education = [
     institution: "G. H. Raisoni College of Engineering",
     location: "Pune, India",
     duration: "2024 - 2027",
+    cgpa: "CGPA: 8.6",
     icon: GraduationCap,
   },
   {
@@ -20,22 +21,32 @@ const education = [
 
 const certifications = [
   {
-    title: "HackerRank SQL Basic Certification",
-    description: "Mastered SQL query development by solving numerous real-world problems. Achieved 4-star rating.",
+    title: "HackerRank SQL — Intermediate & 4-Star",
+    description: "Mastered advanced SQL querying, joins, window functions, and real-world data problems. Achieved 4-star rating.",
     badge: "4 ⭐",
+    badgeColor: "bg-yellow-500/20 text-yellow-400",
     link: "https://drive.google.com/file/d/1bVNCGjQgOr7tpk5vDgVp-Ra4SE4OPPyh/view?usp=drive_link",
   },
   {
-    title: "Effective Writing (Communication Skills) - NPTEL",
+    title: "Effective Writing (Communication Skills) — NPTEL",
     description: "Developed effective writing skills and professional communication techniques.",
+    badge: "NPTEL",
+    badgeColor: "bg-green-500/20 text-green-400",
     link: "https://drive.google.com/file/d/1m39F_Uvhc6xm9ytLg1Q1WQIrSIF8qn3U/view?usp=drive_link",
   },
   {
     title: "TCS iON Certification",
-    description: "Professional development and industry-standard training certification.",
+    description: "Professional development and industry-standard training certification from Tata Consultancy Services.",
+    badge: "TCS",
+    badgeColor: "bg-violet-500/20 text-violet-400",
     link: "https://drive.google.com/file/d/1jryGNgWAqJOSgIjnYNgf7n2io4URlnB4/view?usp=drive_link",
   },
-  
+];
+
+const languages = [
+  { lang: "English", level: "Proficient" },
+  { lang: "Hindi", level: "Proficient" },
+  { lang: "Marathi", level: "Native" },
 ];
 
 const Education = () => {
@@ -49,14 +60,15 @@ const Education = () => {
           <div className="text-center mb-16">
             <p className="text-primary font-mono text-sm mb-2">ACADEMIC BACKGROUND</p>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Education & <span className="text-gradient">Certifications</span>
+              Education &{" "}
+              <span className="text-gradient">Certifications</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Continuous learning and professional development journey
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8 mb-8">
             {/* Education Column */}
             <div>
               <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
@@ -64,7 +76,7 @@ const Education = () => {
                 Education
               </h3>
               <div className="space-y-4">
-                {education.map((edu, idx) => (
+                {education.map((edu) => (
                   <div
                     key={edu.degree}
                     className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group"
@@ -76,7 +88,7 @@ const Education = () => {
                     </h4>
                     <p className="text-muted-foreground mb-3">{edu.institution}</p>
                     
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-3">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {edu.duration}
@@ -87,13 +99,35 @@ const Education = () => {
                       </span>
                     </div>
                     
-                    {edu.percentage && (
-                      <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                        Score: {edu.percentage}
-                      </div>
-                    )}
+                    <div className="flex flex-wrap gap-2">
+                      {edu.cgpa && (
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                          {edu.cgpa}
+                        </div>
+                      )}
+                      {edu.percentage && (
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-medium">
+                          Score: {edu.percentage}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Languages */}
+              <div className="mt-6 glass-card rounded-2xl p-6">
+                <h4 className="font-semibold mb-4 flex items-center gap-2 text-white">
+                  🌐 Languages
+                </h4>
+                <div className="flex flex-wrap gap-3">
+                  {languages.map((l) => (
+                    <div key={l.lang} className="flex flex-col items-center px-4 py-2 rounded-xl bg-secondary/30 border border-border/50">
+                      <span className="font-medium text-sm text-white">{l.lang}</span>
+                      <span className="text-xs text-muted-foreground">{l.level}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             
@@ -104,32 +138,38 @@ const Education = () => {
                 Certifications
               </h3>
               <div className="space-y-4">
-                {certifications.map((cert, idx) => (
-                  <a
-                    key={cert.title}
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 block group cursor-pointer"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          <h4 className="font-semibold group-hover:text-primary transition-colors">
-                            {cert.title}
-                          </h4>
-                          {cert.badge && (
-                            <span className="px-2 py-0.5 text-xs bg-chart-3/20 text-chart-3 rounded-full font-medium">
-                              {cert.badge}
-                            </span>
-                          )}
+                {certifications.map((cert) => {
+                  const Wrapper = cert.link ? "a" : "div";
+                  const wrapperProps = cert.link
+                    ? { href: cert.link, target: "_blank", rel: "noopener noreferrer" }
+                    : {};
+                  return (
+                    <Wrapper
+                      key={cert.title}
+                      {...(wrapperProps as any)}
+                      className={`glass-card rounded-2xl p-5 hover:border-primary/30 transition-all duration-300 block group ${cert.link ? "cursor-pointer" : ""}`}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2 flex-wrap">
+                            <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                              {cert.title}
+                            </h4>
+                            {cert.badge && (
+                              <span className={`px-2 py-0.5 text-xs rounded-full font-medium ${cert.badgeColor}`}>
+                                {cert.badge}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm text-muted-foreground">{cert.description}</p>
                         </div>
-                        <p className="text-sm text-muted-foreground">{cert.description}</p>
+                        {cert.link && (
+                          <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
+                        )}
                       </div>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
-                    </div>
-                  </a>
-                ))}
+                    </Wrapper>
+                  );
+                })}
               </div>
             </div>
           </div>

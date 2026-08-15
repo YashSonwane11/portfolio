@@ -5,11 +5,14 @@ const experiences = [
     title: "Java Developer Intern",
     company: "Info Origin Inc",
     location: "Gondia, India",
-    duration: "June 2023 - July 2023",
+    duration: "June 2023 – July 2023",
+    type: "Internship",
+    color: "from-orange-400 to-amber-500",
     responsibilities: [
-      "Collaborated with team members to complete Java programming assignments efficiently",
-      "Engaged in problem-solving to tackle complex programming tasks",
-      "Gained hands-on experience in software development practices",
+      "Developed Java-based applications using Core Java concepts, writing clean, maintainable code while adopting real-world software engineering best practices.",
+      "Solved logical and technical problems by debugging complex application issues and improving system functionality through analytical troubleshooting.",
+      "Collaborated with the development team to understand software workflows and successfully resolve technical challenges.",
+      "Engaged in problem-solving to tackle complex programming tasks and gained hands-on experience in software development practices.",
     ],
   },
 ];
@@ -28,7 +31,7 @@ const Experience = () => {
               Work <span className="text-gradient">Experience</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Building practical skills through real-world projects
+              Building practical skills through real-world projects and industry collaboration
             </p>
           </div>
           
@@ -49,11 +52,16 @@ const Experience = () => {
                   {/* Header */}
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
                     <div>
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-2 flex-wrap">
                         <Briefcase className="w-5 h-5 text-primary" />
                         <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                           {exp.title}
                         </h3>
+                        <span
+                          className={`text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${exp.color} text-white`}
+                        >
+                          {exp.type}
+                        </span>
                       </div>
                       <p className="text-lg text-muted-foreground">{exp.company}</p>
                     </div>
@@ -82,6 +90,16 @@ const Experience = () => {
                 </div>
               </div>
             ))}
+
+            {/* Continuous Learning note */}
+            <div className="relative pl-0 md:pl-20">
+              <div className="absolute left-6 top-6 w-4 h-4 rounded-full border-2 border-primary/50 bg-background hidden md:block" />
+              <div className="glass-card rounded-2xl p-6 border-dashed hover:border-primary/20 transition-all">
+                <p className="text-sm text-muted-foreground italic">
+                  🚀 <strong className="text-foreground">Continuous Learning</strong> — Passionate about backend development, data analysis, and continuous growth in software engineering and AI technologies.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
