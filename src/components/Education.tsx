@@ -24,21 +24,21 @@ const certifications = [
     title: "HackerRank SQL — Intermediate & 4-Star",
     description: "Mastered advanced SQL querying, joins, window functions, and real-world data problems. Achieved 4-star rating.",
     badge: "4 ⭐",
-    badgeColor: "bg-yellow-500/20 text-yellow-400",
+    badgeColor: "bg-primary/10 text-primary border border-primary/20",
     link: "https://drive.google.com/file/d/1bVNCGjQgOr7tpk5vDgVp-Ra4SE4OPPyh/view?usp=drive_link",
   },
   {
     title: "Effective Writing (Communication Skills) — NPTEL",
     description: "Developed effective writing skills and professional communication techniques.",
     badge: "NPTEL",
-    badgeColor: "bg-green-500/20 text-green-400",
+    badgeColor: "bg-primary/10 text-primary border border-primary/20",
     link: "https://drive.google.com/file/d/1m39F_Uvhc6xm9ytLg1Q1WQIrSIF8qn3U/view?usp=drive_link",
   },
   {
     title: "TCS iON Certification",
     description: "Professional development and industry-standard training certification from Tata Consultancy Services.",
     badge: "TCS",
-    badgeColor: "bg-violet-500/20 text-violet-400",
+    badgeColor: "bg-primary/10 text-primary border border-primary/20",
     link: "https://drive.google.com/file/d/1jryGNgWAqJOSgIjnYNgf7n2io4URlnB4/view?usp=drive_link",
   },
 ];
@@ -51,7 +51,7 @@ const languages = [
 
 const Education = () => {
   return (
-    <section id="education" className="py-24 relative">
+    <section id="education" className="py-24 glass-section glass-orange relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(173_80%_50%/0.05),transparent_60%)]" />
       
       <div className="container px-6 relative z-10">
@@ -106,7 +106,7 @@ const Education = () => {
                         </div>
                       )}
                       {edu.percentage && (
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-medium">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium">
                           Score: {edu.percentage}
                         </div>
                       )}
@@ -117,13 +117,13 @@ const Education = () => {
 
               {/* Languages */}
               <div className="mt-6 glass-card rounded-2xl p-6">
-                <h4 className="font-semibold mb-4 flex items-center gap-2 text-white">
+                <h4 className="font-semibold mb-4 flex items-center gap-2 text-foreground">
                   🌐 Languages
                 </h4>
                 <div className="flex flex-wrap gap-3">
                   {languages.map((l) => (
-                    <div key={l.lang} className="flex flex-col items-center px-4 py-2 rounded-xl bg-secondary/30 border border-border/50">
-                      <span className="font-medium text-sm text-white">{l.lang}</span>
+                    <div key={l.lang} className="flex flex-col items-center px-4 py-2 rounded-xl bg-secondary border border-border/50">
+                      <span className="font-medium text-sm text-foreground">{l.lang}</span>
                       <span className="text-xs text-muted-foreground">{l.level}</span>
                     </div>
                   ))}

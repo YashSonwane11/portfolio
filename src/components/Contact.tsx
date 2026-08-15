@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 glass-section glass-cyan overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,hsl(173_80%_50%/0.08),transparent_60%)]" />
       
       <div className="container px-6 relative z-10">

@@ -57,6 +57,8 @@ function HeroIconBackground() {
 
 
 
+import WebThreads from "./WebThreads";
+
 /* ===== HERO ===== */
 const Hero = () => {
   const name = "YASHKUMAR SONWANE";
@@ -67,15 +69,44 @@ const Hero = () => {
   const profileY = useTransform(scrollY, [0, 150], [0, -40]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="dark relative min-h-screen flex items-center justify-center overflow-hidden bg-background text-foreground">
       
+      {/* WebThreads Background */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
+        <div style={{ width: '100%', height: '100%', position: 'absolute' }}>
+          <WebThreads
+            color1="#2563EB"
+            color2="#D1E974"
+            color3="#FFFFFF"
+            speed={0.2}
+            threadCount={6}
+            frequency={4.0}
+            spread={0.15}
+            taper={1.2}
+            position={0.5}
+            fanMode="center"
+            glow={0.02}
+            falloff={0.6}
+            thickness={1.2}
+            brightness={0.35}
+            opacity={0.5}
+            mirror={true}
+            shimmer={true}
+            grain={true}
+            grainIntensity={0.05}
+            mouseInteraction={true}
+            mouseStrength={0.4}
+          />
+        </div>
+      </div>
+
       {/* Floating icons */}
       <HeroIconBackground />
 
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(173_80%_50%/0.12),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(262_83%_58%/0.1),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--border)/0.35)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/0.35)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(173_80%_50%/0.12),transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(262_83%_58%/0.1),transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--border)/0.35)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/0.35)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)] pointer-events-none" />
 
       {/* Content */}
       <div className="container relative z-10 px-6 py-20">
@@ -97,36 +128,36 @@ const Hero = () => {
           </motion.div>
 
           {/* Availability */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-sm text-muted-foreground">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50/10 border border-emerald-500/20 mb-8">
+            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <span className="text-sm text-emerald-400 font-medium">
               Available for opportunities
             </span>
           </div>
 
           {/* Name */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 mt-4 text-gradient leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 mt-4 text-primary drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] leading-tight">
             {name}
           </h1>
 
           {/* Multi-domain role */}
-          <p className="text-sm sm:text-lg md:text-xl text-muted-foreground font-medium mb-3 leading-relaxed">
+          <p className="text-sm sm:text-lg md:text-xl text-slate-100 font-medium mb-3 leading-relaxed drop-shadow-md">
             Data Analyst{" "}
-            <span className="text-cyan-400">|</span>{" "}
+            <span className="text-primary">|</span>{" "}
             Business Intelligence{" "}
-            <span className="text-violet-400">|</span>{" "}
+            <span className="text-primary">|</span>{" "}
             Java Backend{" "}
-            <span className="text-emerald-400">|</span>{" "}
+            <span className="text-primary">|</span>{" "}
             Full-Stack &amp; AI
           </p>
 
           {/* Tagline */}
-          <p className="text-sm md:text-base text-muted-foreground/80 max-w-2xl mx-auto mb-6 leading-relaxed">
+          <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto mb-6 leading-relaxed drop-shadow-md">
             Turning data into insights, building scalable backend systems, and developing intelligent full-stack applications.
           </p>
 
           {/* Location */}
-          <div className="flex items-center justify-center gap-2 text-muted-foreground mb-8">
+          <div className="flex items-center justify-center gap-2 text-slate-300 mb-8 drop-shadow-md">
             <MapPin className="w-4 h-4" />
             <span>Pune, Maharashtra, India</span>
           </div>
@@ -163,7 +194,7 @@ const Hero = () => {
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={label}
                 whileHover={{ y: -4, scale: 1.1 }}
-                className="p-3 rounded-full bg-white/5 border border-white/10 text-muted-foreground hover:text-primary transition"
+                className="p-3 rounded-full bg-card border border-border text-muted-foreground hover:text-primary transition"
               >
                 <Icon className="w-5 h-5" />
               </motion.a>

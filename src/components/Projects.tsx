@@ -204,9 +204,9 @@ const filters = [
 ];
 
 const catColors: Record<string, string> = {
-  "data-analytics": "bg-cyan-500/15 text-cyan-400 border-cyan-500/25",
-  "java-backend":   "bg-orange-500/15 text-orange-400 border-orange-500/25",
-  "fullstack-ai":   "bg-violet-500/15 text-violet-400 border-violet-500/25",
+  "data-analytics": "bg-primary/10 text-primary border-primary/20",
+  "java-backend":   "bg-primary/10 text-primary border-primary/20",
+  "fullstack-ai":   "bg-primary/10 text-primary border-primary/20",
 };
 const catLabels: Record<string, string> = {
   "data-analytics": "Data & BI",
@@ -218,48 +218,56 @@ const catLabels: Record<string, string> = {
    CARD
 =================================================================== */
 
+const cardThemes = [
+  { bg: "bg-[#673CEB]/15 backdrop-blur-2xl border border-[#673CEB]/30 shadow-[0_8px_32px_rgba(103,60,235,0.1)]", text: "text-white", border: "border-[#673CEB]/30", mutedText: "text-white/70", pill: "bg-[#673CEB]/20 border-[#673CEB]/30 text-white hover:bg-[#673CEB]/30", icon: "text-[#8A63F0]" },
+  { bg: "bg-[#D1E974]/15 backdrop-blur-2xl border border-[#D1E974]/30 shadow-[0_8px_32px_rgba(209,233,116,0.05)]", text: "text-white", border: "border-[#D1E974]/30", mutedText: "text-white/70", pill: "bg-[#D1E974]/10 border-[#D1E974]/30 text-[#D1E974] hover:bg-[#D1E974]/20", icon: "text-[#D1E974]" },
+  { bg: "bg-[#DE4851]/15 backdrop-blur-2xl border border-[#DE4851]/30 shadow-[0_8px_32px_rgba(222,72,81,0.1)]", text: "text-white", border: "border-[#DE4851]/30", mutedText: "text-white/70", pill: "bg-[#DE4851]/20 border-[#DE4851]/30 text-white hover:bg-[#DE4851]/30", icon: "text-[#E67077]" },
+];
+
 function ProjectCard({
   project,
   cardWidth,
+  index,
 }: {
   project: (typeof projects)[0];
   cardWidth: number;
+  index: number;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [imgError, setImgError]   = useState(false);
+  const theme = cardThemes[index % cardThemes.length];
 
   return (
     <div
-      className="snap-start flex-shrink-0 glass-card rounded-2xl overflow-hidden
-                 hover:border-primary/30 transition-all duration-500 flex flex-col"
+      className={`snap-start flex-shrink-0 rounded-[2rem] overflow-hidden transition-all duration-500 flex flex-col ${theme.bg} ${theme.text}`}
       style={{ width: cardWidth }}
     >
       {/* ── Header ── */}
-      <div className="bg-gradient-to-r from-primary/10 to-chart-5/10 p-4 sm:p-5 border-b border-border/50">
+      <div className={`p-4 sm:p-5 border-b ${theme.border}`}>
         <div className="flex flex-col gap-3">
           {/* title row */}
           <div>
             {project.featured && (
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/20 text-primary text-xs font-medium mb-2">
+              <div className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-medium mb-2 ${theme.pill}`}>
                 <PieChart className="w-3 h-3" /> Featured
               </div>
             )}
             <h3 className="font-bold text-sm sm:text-base leading-snug mb-1">
               {project.title}
             </h3>
-            <p className="text-xs text-muted-foreground mb-2">{project.subtitle}</p>
+            <p className={`text-xs mb-2 ${theme.mutedText}`}>{project.subtitle}</p>
 
             {/* badges */}
             <div className="flex flex-wrap gap-1.5 items-center">
               {project.categories.map((cat) => (
                 <span
                   key={cat}
-                  className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${catColors[cat]}`}
+                  className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${theme.pill}`}
                 >
                   {catLabels[cat]}
                 </span>
               ))}
-              <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+              <span className={`text-[10px] flex items-center gap-1 ${theme.mutedText}`}>
                 <Clock className="w-2.5 h-2.5" />
                 {project.date}
               </span>
@@ -270,30 +278,26 @@ function ProjectCard({
           {(project.liveLink || project.githubLink) && (
             <div className="flex gap-2">
               {project.liveLink && (
-                <Button
-                  variant="default"
-                  size="sm"
-                  asChild
-                  className="h-8 px-3 text-xs flex-1 sm:flex-none"
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`h-8 px-3 text-xs flex-1 sm:flex-none inline-flex items-center justify-center rounded-md border transition-colors ${theme.pill} hover:opacity-80`}
                 >
-                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-3 h-3 mr-1" />
-                    Live Demo
-                  </a>
-                </Button>
+                  <ExternalLink className="w-3 h-3 mr-1" />
+                  Live Demo
+                </a>
               )}
               {project.githubLink && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  className="h-8 px-3 text-xs flex-1 sm:flex-none"
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`h-8 px-3 text-xs flex-1 sm:flex-none inline-flex items-center justify-center rounded-md border transition-colors ${theme.pill} hover:opacity-80`}
                 >
-                  <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-3 h-3 mr-1" />
-                    Code
-                  </a>
-                </Button>
+                  <Github className="w-3 h-3 mr-1" />
+                  Code
+                </a>
               )}
             </div>
           )}
@@ -303,7 +307,7 @@ function ProjectCard({
       {/* ── Preview Image ── */}
       {project.image && !imgError && (
         <div
-          className="relative overflow-hidden border-b border-border/50 bg-black/20"
+          className={`relative overflow-hidden border-b ${theme.border} bg-black/10`}
           style={{ height: 175 }}
         >
           <div
@@ -321,7 +325,7 @@ function ProjectCard({
 
       {/* ── Body ── */}
       <div className="p-4 sm:p-5 flex-1 flex flex-col">
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
+        <p className={`text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 ${theme.mutedText}`}>
           {project.description}
         </p>
 
@@ -330,8 +334,7 @@ function ProjectCard({
           {project.techStack.map((t) => (
             <span
               key={t}
-              className="px-2.5 py-0.5 bg-secondary rounded text-xs font-medium
-                         hover:bg-primary/20 hover:text-primary transition-colors"
+              className={`px-2.5 py-0.5 rounded text-xs font-medium border transition-colors ${theme.pill}`}
             >
               {t}
             </span>
@@ -341,8 +344,7 @@ function ProjectCard({
         {/* Expand toggle */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center justify-between w-full py-2 text-xs text-primary
-                     hover:text-primary/80 border-t border-border/50 mt-auto transition-colors"
+          className={`flex items-center justify-between w-full py-2 text-xs border-t mt-auto transition-colors font-medium hover:opacity-80 ${theme.text} ${theme.border}`}
         >
           <span>{expanded ? "Hide Details" : "View Outcomes & KPIs"}</span>
           {expanded ? (
@@ -358,14 +360,13 @@ function ProjectCard({
               {project.outcomes.map((o) => (
                 <div
                   key={o.title}
-                  className="p-2 rounded-xl bg-secondary/30 border border-border/50
-                             hover:border-primary/30 transition-all text-center"
+                  className={`p-2 rounded-xl border transition-all text-center ${theme.pill}`}
                 >
-                  <o.icon className="w-4 h-4 text-primary mb-1 mx-auto" />
+                  <o.icon className={`w-4 h-4 mb-1 mx-auto ${theme.icon}`} />
                   <h5 className="font-semibold text-[10px] leading-tight mb-0.5">
                     {o.title}
                   </h5>
-                  <p className="text-[10px] text-muted-foreground leading-snug">{o.desc}</p>
+                  <p className={`text-[10px] leading-snug ${theme.mutedText}`}>{o.desc}</p>
                 </div>
               ))}
             </div>
@@ -373,8 +374,7 @@ function ProjectCard({
               {project.kpis.map((k) => (
                 <span
                   key={k}
-                  className="px-2.5 py-0.5 text-[10px] bg-primary/10 text-primary
-                             rounded-full border border-primary/20"
+                  className={`px-2.5 py-0.5 text-[10px] rounded-full border ${theme.pill}`}
                 >
                   {k}
                 </span>
@@ -447,7 +447,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="py-20 glass-section glass-red">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,hsl(262_83%_58%/0.05),transparent_60%)]" />
 
       <div ref={sectionRef} className="container px-4 sm:px-6 relative z-10">
@@ -458,7 +458,7 @@ const Projects = () => {
             <p className="text-primary font-mono text-sm mb-2">FEATURED WORK</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3">
               Projects &{" "}
-              <span className="text-gradient">Case Studies</span>
+              <span className="text-primary">Case Studies</span>
             </h2>
             <p className="text-muted-foreground text-sm max-w-xl mx-auto">
               Real-world projects across Data Analytics, Java Backend, and Full-Stack
@@ -504,11 +504,12 @@ const Projects = () => {
                        [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
                        snap-x snap-mandatory"
           >
-            {filtered.map((project) => (
+            {filtered.map((project, i) => (
               <ProjectCard
                 key={project.id}
                 project={project}
                 cardWidth={cardWidth}
+                index={i}
               />
             ))}
           </div>
@@ -521,8 +522,8 @@ const Projects = () => {
               disabled={slideIdx === 0}
               aria-label="Previous project"
               className="w-9 h-9 flex items-center justify-center rounded-full
-                         bg-white/10 border border-white/15 text-white
-                         hover:bg-primary/30 hover:border-primary/50
+                         bg-card border border-border text-foreground
+                         hover:bg-muted hover:text-primary hover:border-primary/50
                          disabled:opacity-25 disabled:cursor-not-allowed
                          transition-all duration-200 flex-shrink-0"
             >
@@ -539,7 +540,7 @@ const Projects = () => {
                   className={`rounded-full transition-all duration-300 ${
                     i === slideIdx
                       ? "w-5 h-2 bg-primary"
-                      : "w-2 h-2 bg-white/20 hover:bg-white/40"
+                      : "w-2 h-2 bg-secondary hover:bg-secondary-foreground/20 border border-border/50"
                   }`}
                 />
               ))}
@@ -551,8 +552,8 @@ const Projects = () => {
               disabled={slideIdx >= filtered.length - 1}
               aria-label="Next project"
               className="w-9 h-9 flex items-center justify-center rounded-full
-                         bg-white/10 border border-white/15 text-white
-                         hover:bg-primary/30 hover:border-primary/50
+                         bg-card border border-border text-foreground
+                         hover:bg-muted hover:text-primary hover:border-primary/50
                          disabled:opacity-25 disabled:cursor-not-allowed
                          transition-all duration-200 flex-shrink-0"
             >

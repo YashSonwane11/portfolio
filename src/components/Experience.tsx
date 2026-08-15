@@ -19,7 +19,7 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 relative">
+    <section id="experience" className="py-24 glass-section glass-blue">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,hsl(262_83%_58%/0.05),transparent_50%)]" />
       
       <div className="container px-6 relative z-10">
@@ -58,7 +58,7 @@ const Experience = () => {
                           {exp.title}
                         </h3>
                         <span
-                          className={`text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${exp.color} text-white`}
+                          className={`text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20`}
                         >
                           {exp.type}
                         </span>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { BarChart3, Server, Brain, Code2, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const domains = [
   {
@@ -35,7 +36,7 @@ const domains = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-24 glass-section glass-purple">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(280_85%_65%/0.06),transparent_60%)]" />
 
       <div className="container px-6 relative z-10">
@@ -82,10 +83,10 @@ const About = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "6+", label: "Projects Built", color: "text-cyan-400" },
-                { value: "8.6", label: "B.Tech CGPA", color: "text-violet-400" },
-                { value: "3", label: "Technical Domains", color: "text-orange-400" },
-                { value: "5+", label: "Certifications", color: "text-emerald-400" },
+                { value: "6+", label: "Projects Built", color: "text-primary" },
+                { value: "8.6", label: "B.Tech CGPA", color: "text-primary" },
+                { value: "3", label: "Technical Domains", color: "text-primary" },
+                { value: "5+", label: "Certifications", color: "text-primary" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -110,11 +111,11 @@ const About = () => {
                 className="glass-card rounded-2xl p-6 hover:border-primary/30 hover:-translate-y-1 transition-all duration-300"
               >
                 <div
-                  className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${domain.color} mb-4 shadow-lg`}
+                  className={`inline-flex p-3 rounded-xl bg-primary/10 mb-4`}
                 >
-                  <domain.icon className="w-5 h-5 text-white" />
+                  <domain.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-semibold text-sm mb-2">{domain.title}</h3>
+                <h3 className="font-semibold text-sm mb-2 text-foreground">{domain.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{domain.description}</p>
               </motion.div>
             ))}
@@ -126,12 +127,12 @@ const About = () => {
               variant="outline"
               size="lg"
               asChild
-              className="group gap-2 border-white/20 hover:border-primary/50 hover:bg-primary/10"
+              className="group gap-2 border-border text-foreground hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
             >
-              <a href="#github">
+              <Link to="/code-portfolio">
                 <Github className="w-5 h-5 group-hover:text-primary transition-colors" />
                 View Code Portfolio
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

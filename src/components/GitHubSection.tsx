@@ -136,7 +136,7 @@ const techGroups = [
 
 const GitHubSection = () => {
   return (
-    <section id="github" className="py-24 relative overflow-hidden">
+    <section id="github" className="dark py-24 relative overflow-hidden bg-background text-foreground">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,hsl(220_80%_50%/0.06),transparent_55%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(280_85%_65%/0.06),transparent_55%)]" />
@@ -284,7 +284,7 @@ const GitHubSection = () => {
                   <div className="flex items-start justify-between gap-2 mb-3">
                     <div className="flex items-center gap-2">
                       <repo.icon className={`w-4 h-4 flex-shrink-0 ${repo.iconColor}`} />
-                      <span className="font-semibold text-sm text-white leading-snug">
+                      <span className="font-semibold text-sm text-foreground leading-snug">
                         {repo.name}
                       </span>
                     </div>
@@ -334,7 +334,7 @@ const GitHubSection = () => {
                       {repo.topics.slice(0, 3).map((t) => (
                         <span
                           key={t}
-                          className="text-[9px] px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-muted-foreground"
+                          className="text-[9px] px-1.5 py-0.5 rounded bg-secondary text-secondary-foreground"
                         >
                           {t}
                         </span>

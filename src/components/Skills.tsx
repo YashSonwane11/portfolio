@@ -104,28 +104,26 @@ const Skills = () => {
   };
 
   return (
-    <section
-      id="skills"
-      className="relative py-20 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.08),transparent_40%),radial-gradient(circle_at_bottom,rgba(139,92,246,0.08),transparent_50%)]"
-    >
+    <section id="skills" className="py-24 glass-section glass-lime relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.08),transparent_40%),radial-gradient(circle_at_bottom,rgba(139,92,246,0.08),transparent_50%)] pointer-events-none" />
       <div ref={sectionRef} className="container px-4 sm:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
 
           {/* ── Header ── */}
           <div className="text-center mb-10">
-            <p className="text-cyan-400 font-mono text-sm mb-3 tracking-widest uppercase">
+            <p className="text-primary font-mono text-sm mb-3 tracking-widest uppercase">
               Technical Expertise
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">
               Skills &{" "}
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
+              <span className="text-primary">
                 Technologies
               </span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto text-sm">
               Proficient across the full data analytics, backend, and full-stack development stack
             </p>
-            <div className="mt-6 h-px w-32 mx-auto bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+            <div className="mt-6 h-px w-32 mx-auto bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
           </div>
 
           {/* ── Skill Card Slider ── */}
@@ -139,25 +137,24 @@ const Skills = () => {
               <div
                 key={group.title}
                 className="snap-start flex-shrink-0 rounded-2xl p-5
-                           bg-white/[0.03] backdrop-blur-xl border border-white/10
-                           shadow-[0_10px_40px_-15px_rgba(0,0,0,0.7)]
-                           hover:shadow-[0_20px_60px_-20px_rgba(56,189,248,0.25)]
-                           hover:-translate-y-1 transition-all duration-500 group"
+                           bg-card border border-border
+                           shadow-sm hover:shadow-md
+                           hover:-translate-y-1 transition-all duration-300 group"
                 style={{ width: cardWidth }}
               >
                 <div
-                  className={`inline-flex p-2.5 rounded-xl bg-gradient-to-br ${group.color} mb-3 shadow-lg`}
+                  className={`inline-flex p-2.5 rounded-xl bg-primary/10 mb-3`}
                 >
-                  <group.icon className="w-5 h-5 text-white" />
+                  <group.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-sm font-semibold mb-3 text-white/90">{group.title}</h3>
+                <h3 className="text-sm font-semibold mb-3 text-foreground">{group.title}</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-2.5 py-1 text-xs rounded-md bg-white/[0.05] border border-white/10
-                                 text-muted-foreground hover:text-cyan-400 hover:border-cyan-400/40
-                                 hover:bg-cyan-400/10 transition-all duration-300 cursor-default"
+                      className="px-2.5 py-1 text-xs rounded-md bg-secondary border border-border
+                                 text-secondary-foreground hover:text-primary hover:border-primary/40
+                                 hover:bg-primary/10 transition-all duration-300 cursor-default"
                     >
                       {skill}
                     </span>
@@ -175,8 +172,8 @@ const Skills = () => {
               disabled={activeIdx === 0}
               aria-label="Previous"
               className="w-9 h-9 flex items-center justify-center rounded-full
-                         bg-white/10 border border-white/15 text-white
-                         hover:bg-cyan-500/30 hover:border-cyan-400/50
+                         bg-card border border-border text-foreground
+                         hover:bg-muted hover:border-primary/50 hover:text-primary
                          disabled:opacity-25 disabled:cursor-not-allowed
                          transition-all duration-200 flex-shrink-0"
             >
@@ -205,8 +202,8 @@ const Skills = () => {
               disabled={activeIdx === skillGroups.length - 1}
               aria-label="Next"
               className="w-9 h-9 flex items-center justify-center rounded-full
-                         bg-white/10 border border-white/15 text-white
-                         hover:bg-cyan-500/30 hover:border-cyan-400/50
+                         bg-card border border-border text-foreground
+                         hover:bg-muted hover:border-primary/50 hover:text-primary
                          disabled:opacity-25 disabled:cursor-not-allowed
                          transition-all duration-200 flex-shrink-0"
             >
